@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="calculadora_em_sala.vcxproj" Id="8396b95a-7888-43f3-b6d1-d8b5b866f393" />
+</Solution>
