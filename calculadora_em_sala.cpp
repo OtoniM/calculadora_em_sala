@@ -11,7 +11,7 @@ int main() {
 	int op = 0, resultado = 0, qtd = 0, numero_subtracao = 0;
 	int numeros_soma = 0;
 	double dividendo = 0.0, divisor = 0.0, base = 0.0, expoente = 0.0, resultado_multi = 1;
-	double numero_multiplicacao = 0.0, radicando = 0.0, a = 0.0, b = 0.0, c = 0.0, delta = 0.0;
+	double numero_multiplicacao = 0.0, radicando = 0.0, a = 0.0, b = 0.0, c = 0.0, delta = 0.0, x1 = 0.0, x2 = 0.0;
 
 	SetConsoleOutputCP(CP_UTF8);
 
@@ -21,18 +21,17 @@ int main() {
 		cout << "\t =========================================== " << endl;
 		cout << "\t ||            CALCULADORA C++            ||" << endl;
 		cout << "\t =========================================== " << endl;
-
-		cout << "\t\tSelecione uma das opções abaixo:\n" << endl;
-		cout << "\t\t1 - Soma" << endl;
-		cout << "\t\t2 - Subtração" << endl;
-		cout << "\t\t3 - Multiplicação" << endl;
-		cout << "\t\t4 - Divisão" << endl;
-		cout << "\t\t5 - Potenciação" << endl;
-		cout << "\t\t6 - Radiciação" << endl;
-		cout << "\t\t7 - Bhaskara" << endl;
-		cout << "\t\t0 - Encerrar programa" << endl;
-		cout << "\n";
-		cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+		cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|" << endl;
+		cout << "Selecione uma das opções abaixo:					       |" << endl;
+		cout << "1 - Soma								       |" << endl;
+		cout << "2 - Subtração								       |" << endl;
+		cout << "3 - Multiplicação							       |" << endl;
+		cout << "4 - Divisão								       |" << endl;
+		cout << "5 - Potenciação								       |" << endl;
+		cout << "6 - Radiciação								       |" << endl;
+		cout << "7 - Bhaskara						                       |" << endl;
+		cout << "0 - Encerrar programa						               |" << endl;
+		cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|" << endl;
 		cout << "\n\t\tDigite a opção desejada: ";
 		cin >> op;
 
@@ -189,21 +188,30 @@ int main() {
 			cout << "\t ||              FUNÇÃO BHASKARA          || " << endl;
 			cout << "\t =========================================== " << endl;
 
-			cout << "\n\tDigite o valor de A: ";
+			cout << "\n\tDigite o coeficiente A: ";
 			cin >> a;
 
-			cout << "\n\tDigite o valor de B: ";
+			cout << "\n\tDigite o coeficiente B: ";
 			cin >> b;
 
-			cout << "\n\tDigite o valor de C: ";
+			cout << "\n\tDigite o coeficiente C: ";
 			cin >> c;
 
 			delta = (pow(b, 2)) - 4*a*c;
-
-
-
-
 			
+			if (delta < 0) {
+				cout << "A equação não possui raízes reais!";
+			}else if (delta == 0) {
+				x1 = -b / (2*a);
+				cout << "\n\tResultado da Fórmula de Bhaskara: " << endl;
+				cout << "\tX = " << x1 << endl;
+			}else {
+				x1 = (-b + sqrt(delta)) / (2*a);
+				x2 = (-b - sqrt(delta)) / (2*a);
+				cout << "\n\tResultado da Fórmula de Bhaskara: " << endl;
+				cout << "\tX1 = " << x1 << endl;
+				cout << "\tX2 = " << x2 << endl;
+			}
 			break;
 
 		case 0:
