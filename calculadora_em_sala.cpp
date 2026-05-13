@@ -9,8 +9,9 @@ using namespace std;
 int main() {
 
 	int op = 0, resultado = 0, qtd = 0, numero_subtracao = 0;
-	int numeros_soma = 0, segundos = 5;
-	double dividendo = 0.0, divisor = 0.0, base = 0.0, expoente = 0.0, resultado_multi = 1, numero_multiplicacao = 0.0, radicando = 0.0;
+	int numeros_soma = 0;
+	double dividendo = 0.0, divisor = 0.0, base = 0.0, expoente = 0.0, resultado_multi = 1;
+	double numero_multiplicacao = 0.0, radicando = 0.0, a = 0.0, b = 0.0, c = 0.0, delta = 0.0;
 
 	SetConsoleOutputCP(CP_UTF8);
 
@@ -90,13 +91,15 @@ int main() {
 
 				cout << "\tInforme o " << i + 1 << "º número: ";
 				cin >> numero_subtracao;
-				if (i == 0) {
+				if( i == 0){
 					resultado = numero_subtracao;
 				}
 				else {
 					resultado -= numero_subtracao;
 				}
+				
 			}
+				
 
 			cout << "\n\tResultado da subtração: " << resultado << endl;
 			break;
@@ -109,6 +112,7 @@ int main() {
 			cout << "\n\tInforme a quantidade de números que deseja multiplicar: ";
 			cin >> qtd;
 
+			resultado_multi = 1;
 			for (int i = 0; i < qtd; i++) {
 				cout << "\tInforme o " << i + 1 << "º número: ";
 				cin >> numero_multiplicacao;
@@ -128,7 +132,7 @@ int main() {
 
 
 			do {
-				cout << "\n\tDigite o divisor (Não pode ser menor que 0): ";
+				cout << "\n\tDigite o divisor (Não pode ser menor ou igual a 0): ";
 				cin >> divisor;
 
 				if (divisor == 0) {
@@ -170,27 +174,51 @@ int main() {
 				cout << "Digite o radicando: ";
 				cin >> radicando;
 
-				if (radicando == 0) {
-					cout << "ERRO! Valor do Radicando não pode ser 0. Tente novamente \n" << endl;
+				if (radicando < 0) {
+					cout << "ERRO! VALOR DO RADICANDO NÃO PODE SER MENOR QUE 0 \n" << endl;
 				}
 				else {
 					cout << "\n\tResultado da radiciação: √" << radicando <<" = " << sqrt(radicando) << endl;
 				}
-			} while ( radicando == 0);
+			} while ( radicando < 0);
 
 			break;
 
 		case 7:
-			cout << "\n\tFunção de Bhaskara selecionada.\n" << endl;
+			cout << "\t =========================================== " << endl;
+			cout << "\t ||              FUNÇÃO BHASKARA          || " << endl;
+			cout << "\t =========================================== " << endl;
+
+			cout << "\n\tDigite o valor de A: ";
+			cin >> a;
+
+			cout << "\n\tDigite o valor de B: ";
+			cin >> b;
+
+			cout << "\n\tDigite o valor de C: ";
+			cin >> c;
+
+			delta = (pow(b, 2)) - 4*a*c;
+
+
+
+
+			
 			break;
 
 		case 0:
-			cout << "\n\tEncerrando o programa";
-			Sleep(3000);
-			cout << "\n\tPrograma Encerrado!\n" << endl;
-			system("pause");
+			for (int c = 5; c > 0; c--) {
+				cout << "\r\t Encerrando o programa em " << c << " segundos..." << flush;
+				Sleep(1000);
+				
+		    }
+			cout << "\n\t Programa Encerrado! Até a próxima.";
+			Sleep(1000);
 			break;
 
+			/* Fallthrough  */
+			// esse comentário em cima é porque o compilador estava implicando que o case 7 não tinha um break, mas tinha, isso resolveu.
+			
 		default:
 			cout << "\n\tOpção inválida. Tente novamente.\n" << endl;
 			break;
@@ -201,7 +229,7 @@ int main() {
 			cout << "\n";
 			system("pause");
 
-			for (int i = segundos; i > 0; i--) {
+			for (int i = 5; i > 0; i--) {
 
 				cout << "\r\tA tela será limpa em " << i << " segundos..." << flush;
 				Sleep(1000);
