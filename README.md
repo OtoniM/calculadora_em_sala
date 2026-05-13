@@ -102,4 +102,4 @@ Este projeto está sob a licença MIT.
 
 ## Autor
 
-Desenvolvido por Miguel Augusto da Mota Otoni, estudande de Programação na FACESM (Faculdade de Ciências Aplicadas ao Sul de Minas).
+Desenvolvido por Miguel Augusto da Mota Otoni, estudante de Programação na FACESM (Faculdade de Ciências Aplicadas ao Sul de Minas).
