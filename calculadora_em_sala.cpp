@@ -2,56 +2,24 @@
 #include <string>
 #include <cstdlib>
 #include <windows.h>
+#include <cmath>
 
 using namespace std;
-
-void animacao() {
-
-	cout << "\n\tProcessando";
-
-	for (int i = 0; i < 3; i++) {
-		cout << ".";
-		Sleep(200); //anotação: Sleep é uma função da biblioteca windows.h que pausa a execução do programa por um determinado número de milissegundos. No caso do código, Sleep(200) faz com que o programa espere por 200 milissegundos (ou 0,2 segundos) antes de continuar a execução. Isso é usado para criar um efeito de animação, onde os pontos são exibidos um a um com uma pequena pausa entre eles, simulando um processo de carregamento ou processamento.
-	}
-
-	cout << "\n\tCalculando:\n";
-
-	for (int progresso = 0; progresso <= 100; progresso += 5) {
-
-		cout << "\r\t[";
-
-		for (int j = 0; j < progresso / 5; j++) {
-			cout << "=";
-		}
-
-		for (int j = progresso / 5; j < 20; j++) {
-			cout << " ";
-		}
-
-		cout << "] " << progresso << "%" << flush;
-
-		Sleep(100);
-	}
-	cout << endl;
-}
-
-void cabecalho(string titulo) { // void é um tipo de retorno que indica que a função não devolve nenhum valor.
-	cout << "\t =========================================== " << endl;
-	cout << "\t ||           " << titulo << "                 ||" << endl;
-	cout << "\t =========================================== " << endl;
-}
 
 int main() {
 
 	int op = 0, resultado = 0, qtd = 0, numero_subtracao = 0;
 	int numeros_soma = 0, segundos = 5;
+	double dividendo = 0.0, divisor = 0.0, base = 0.0, expoente = 0.0, resultado_multi = 1, numero_multiplicacao = 0.0, radicando = 0.0;
 
 	SetConsoleOutputCP(CP_UTF8);
 
 	do {
 		system("cls");
 
-		cabecalho("CALCULADORA");
+		cout << "\t =========================================== " << endl;
+		cout << "\t ||            CALCULADORA C++            ||" << endl;
+		cout << "\t =========================================== " << endl;
 
 		cout << "\t\tSelecione uma das opções abaixo:\n" << endl;
 		cout << "\t\t1 - Soma" << endl;
@@ -62,15 +30,21 @@ int main() {
 		cout << "\t\t6 - Radiciação" << endl;
 		cout << "\t\t7 - Bhaskara" << endl;
 		cout << "\t\t0 - Encerrar programa" << endl;
-
+		cout << "\n";
+		cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 		cout << "\n\t\tDigite a opção desejada: ";
 		cin >> op;
+
+		
 
 		switch (op) {
 
 		case 1:
+			cout << "\t =========================================== " << endl;
+			cout << "\t ||              FUNÇÃO SOMA               ||" << endl;
+			cout << "\t =========================================== " << endl;
 
-			cabecalho("FUNÇÃO SOMA");
+			
 
 			do {
 
@@ -95,14 +69,14 @@ int main() {
 				resultado += numeros_soma;
 			}
 
-			animacao();
-
 			cout << "\n\tResultado da soma: " << resultado << endl;
 
 			break;
 
 		case 2:
-			cabecalho("FUNÇÃO SUBTRAÇÃO");
+			cout << "\t =========================================== " << endl;
+			cout << "\t ||           FUNÇÃO SUBTRAÇÃO             ||" << endl;
+			cout << "\t =========================================== " << endl;
 
 
 			do {
@@ -123,28 +97,87 @@ int main() {
 					resultado -= numero_subtracao;
 				}
 			}
-			animacao(); // void da animação de UI/UX
 
 			cout << "\n\tResultado da subtração: " << resultado << endl;
-
-
-
 			break;
 
 		case 3:
-			cout << "\n\tFunção de multiplicação selecionada.\n" << endl;
+			cout << "\t =========================================== " << endl;
+			cout << "\t ||           FUNÇÃO MULTIPLICAÇÃO        || " << endl;
+			cout << "\t =========================================== " << endl;
+
+			cout << "\n\tInforme a quantidade de números que deseja multiplicar: ";
+			cin >> qtd;
+
+			for (int i = 0; i < qtd; i++) {
+				cout << "\tInforme o " << i + 1 << "º número: ";
+				cin >> numero_multiplicacao;
+				resultado_multi *= numero_multiplicacao;
+			}
+			
+			cout << "\n\tResultado da multiplicação: " << resultado_multi << endl;
 			break;
 
 		case 4:
-			cout << "\n\tFunção de divisão selecionada.\n" << endl;
+			cout << "\t =========================================== " << endl;
+			cout << "\t ||              FUNÇÃO DIVISÃO           || " << endl;
+			cout << "\t =========================================== " << endl;
+
+			cout << "\n\tDigite o dividendo: ";
+			cin >> dividendo;
+
+
+			do {
+				cout << "\n\tDigite o divisor (Não pode ser menor que 0): ";
+				cin >> divisor;
+
+				if (divisor == 0) {
+
+					cout << "ERRO! IMPOSSÍVEL DIVIDIR POR 0";
+					break;
+
+				}else {
+					cout << "\n\tResultado da divisão: " << dividendo << "/" << divisor << " = " << dividendo / divisor << endl;
+				}
+			} while (divisor == 0);
+
+			
 			break;
+			
 
 		case 5:
-			cout << "\n\tFunção de potenciação selecionada.\n" << endl;
+			cout << "\t =========================================== " << endl;
+			cout << "\t ||            FUNÇÃO POTENCIAÇÃO         || " << endl;
+			cout << "\t =========================================== " << endl;
+
+			cout << "\n\t Digite a base: ";
+			cin >> base;
+
+			cout << "\n\t Digite o expoente: ";
+			cin >> expoente;
+
+			cout << "\n\tResultado da Potenciação: " <<base << "^"<< expoente << " = " << pow(base, expoente) << endl;
+
 			break;
 
 		case 6:
-			cout << "\n\tFunção de radiciação selecionada.\n" << endl;
+			cout << "\t =========================================== " << endl;
+			cout << "\t ||           FUNÇÃO RADICIAÇÃO           || " << endl;
+			cout << "\t =========================================== " << endl;
+
+			do
+			{
+				cout << "Digite o radicando: ";
+				cin >> radicando;
+
+				if (radicando == 0) {
+					cout << "ERRO! Valor do Radicando não pode ser 0. Tente novamente \n" << endl;
+				}
+				else {
+					cout << "\n\tResultado da radiciação: √" << radicando <<" = " << sqrt(radicando) << endl;
+				}
+			} while ( radicando == 0);
+
 			break;
 
 		case 7:
@@ -153,12 +186,6 @@ int main() {
 
 		case 0:
 			cout << "\n\tEncerrando o programa";
-			for (int c = 0; c < 3; c++) {
-				cout << ".";
-				Sleep(200); //anotação: Sleep é uma função da biblioteca windows.h que pausa a execução do programa por um determinado número de milissegundos. No caso do código, Sleep(200) faz com que o programa espere por 200 milissegundos (ou 0,2 segundos) antes de continuar a execução. Isso é usado para criar um efeito de animação, onde os pontos são exibidos um a um com uma pequena pausa entre eles, simulando um processo de carregamento ou processamento.
-			}
-
-
 			Sleep(3000);
 			cout << "\n\tPrograma Encerrado!\n" << endl;
 			system("pause");
